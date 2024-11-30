@@ -1,3 +1,4 @@
+/* All documetn styles */
 * {
     margin: 0;
     font-family: "Roboto", sans-serif;
@@ -7,29 +8,23 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-header {
-    display: flex;
-    justify-content: end;
-    width: 100%;
-    height: 5vw;
-    box-shadow: 0 5px 20px 0px grey;
+dialog{
+    transition: display 0.2s allow-discrete, overlay 0.2s allow-discrete;
+    animation: close-dialog 0.2s forwards;
+    top: 7vw;
+    margin: 0 auto;
+    width: 30%;
+    border: none;
+    border-radius: 1vw;
+    background-color: rgb(219, 255, 216, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 4;
+    padding: 2vw;
+    box-shadow: 0vw 0vw 1vw 0vw grey;
 }
 
-header h1 a{
-    position: absolute;
-    text-decoration: none;
-    font-weight: 900;
-    left: 0;
-    margin-left: 2vw;
-    margin-top: 1vw;
-    color: black;
-}
-
-form#auth-form{
-    margin-right: 15vw;
-    display: flex;
-    gap: 2vw;
-    align-items: center;
+dialog[open]{
+    animation: open-dialog 0.2s forwards;
 }
 
 input {
@@ -37,6 +32,7 @@ input {
     border-radius: 1vw;
     padding: 0.8vw;
     background-color: rgb(215, 215, 215);
+    font-size: 1vw;
 }
 
 input[type='submit'] {
@@ -51,6 +47,46 @@ input[type='submit']:hover {
     transition: 0.5s;
 }
 
+/* Header styles */
+
+header {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    height: 5vw;
+    box-shadow: 0 0.1vw 1vw 0 grey;
+}
+
+header h1 a{
+    position: absolute;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 2.2vw;
+    left: 0;
+    margin-left: 2vw;
+    margin-top: 1vw;
+    color: black;
+}
+
+form#auth-form{
+    margin-right: 15vw;
+    display: flex;
+    gap: 1.5vw;
+    align-items: center;
+}
+
+form#auth-form input{
+    width: 12vw;
+    font-size: 1vw;
+}
+
+form#auth-form input[type='submit']{
+    width: 8vw;
+    font-size: 1.2vw;
+    font-weight: 500;
+    padding: 0.65vw 2vw;
+}
+
 header button{
     transition: 0.2s;
     border: none;
@@ -59,9 +95,9 @@ header button{
     position: absolute;
     margin-top: 1.1vw;
     margin-right: 4vw;
-    font-size: 1vw;
+    font-size: 1.1vw;
     font-weight: 300;
-    padding: 0.8vw 2vw;
+    padding: 0.75vw 2vw;
 }
 
 header button:hover{
@@ -85,6 +121,7 @@ header .hide-bt:nth-of-type(2){
 main h1 {
     margin: 2vw 0;
     text-align: center;
+    font-size: 2vw;
 }
 
 main #auc-box{
@@ -95,6 +132,11 @@ main #auc-box{
     justify-content: center;
     gap: 5vw;
 }
+
+#auc-box .auc-cont h2{
+    font-size: 1.7vw;
+}
+
 
 #auc-box .auc-cont{
     background-color: rgb(202, 202, 202);
@@ -110,6 +152,11 @@ main #auc-box{
 .auc-cont ol{
     align-self: start;
     word-wrap: balance;
+    padding-left: 1.5vw;
+}
+
+#auc-box .auc-cont li{
+    font-size: 1vw;
 }
 
 .auc-cont button {
@@ -130,18 +177,6 @@ main #auc-box{
 
 /* dialog reg styles */
 
-dialog{
-    top: 7vw;
-    margin: 0 auto;
-    width: 30%;
-    border: none;
-    border-radius: 1vw;
-    background-color: rgb(219, 255, 216, 0.7);
-    backdrop-filter: blur(10px);
-    z-index: 4;
-    padding-bottom: 3vw;
-}
-
 dialog form#reg-form{
     display: flex;
     flex-direction: column;
@@ -160,6 +195,7 @@ dialog button.close-button {
     background-color: white;
     padding: 0.2vw 0.5vw;
     border-radius: 0.3vw;
+    font-size: 2vw;
 }
 
 dialog button.close-button:hover{
@@ -181,3 +217,50 @@ dialog form#control-form input:not(input[type="submit"]){
     background-color: white;
 }
 
+/* dialog user styles */
+
+dialog#user-dialog {
+    width: 90vw;
+}
+
+dialog form.user-info{
+    display: flex;
+    gap: 0.6vw;
+    justify-content: center;
+}
+
+dialog form.user-info *{
+    width: 10vw;
+    margin-bottom: 0.5vw;
+    font-size: 1vw;
+    background: white;
+    border: 0.1vw solid rgb(58, 107, 33);
+}
+dialog form.user-info *:nth-child(1){
+    width: 3vw;
+    background-color: rgb(230, 230, 230);
+}
+
+dialog form.user-info select{
+    border: 0.1vw solid rgb(58, 107, 33);
+    border-radius: 1vw;
+
+}
+
+@keyframes open-dialog{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes close-dialog{
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

@@ -12,5 +12,6 @@ class Program {
 
         ApiImpl.logger.Info("MAIN", "Server started...");
         Console.ReadKey(true);
+        ApiImpl.logger.Info("MAIN", "Server closed by terminale...");
     }
 }
