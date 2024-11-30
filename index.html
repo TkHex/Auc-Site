@@ -9,6 +9,9 @@
     <script src="./resources/js/FormLogic.js"></script>
 </head>
 <body>
+
+    <!-- Header html -->
+
     <header>
         <h1>
             <a href="index.html">AUC.RU</a>
@@ -22,7 +25,14 @@
         </form>
         <button onclick="openForm('reg-dialog')">Регистрация</button>
     </header>
+
+    <!-- Main -->
+
     <main>
+        <h1 class="title-main">Главная</h1>
+
+        <!-- Reg Dialog -->
+
         <dialog id="reg-dialog">
             <div class="reg-page">
                 <button class="close-button" onclick="closeForm('reg-dialog')">X</button>
@@ -39,6 +49,8 @@
             </div>
         </dialog>
 
+        <!-- Control Dialog -->
+
         <dialog id="control-dialog">
             <div class="control-page">
                 <button class="close-button" onclick="closeForm('control-dialog')">X</button>
@@ -53,6 +65,8 @@
                 </form>
             </div>
         </dialog>
+
+        <!-- User Dialog -->
 
         <dialog id="user-dialog">
             <div class="user-page">
@@ -75,7 +89,8 @@
             </div>
         </dialog>
 
-        <h1 class="title-main">Главная</h1>
+        <!-- Auctions -->
+
         <div id="auc-box">
             <div class="auc-cont">
                 <h2>Название аукциона</h2>
@@ -84,6 +99,7 @@
                     <li>Лот 2</li>
                     <li>Лот 3</li>
                 </ol>
+                
                 <button onclick = "alert('Ставка сделана, ставок больше нет')">Сделать ставку</button>
             </div>
             <div class="auc-cont">
@@ -97,6 +113,7 @@
                 <button onclick = "alert('Ставка сделана, ставок больше нет')">Сделать ставку</button>
             </div>
         </div>
+
     </main>
 </body>
 </html>
