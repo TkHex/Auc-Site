@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+header {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    height: 5vw;
+    box-shadow: 0 5px 20px 0px grey;
+}
+
+header h1 a{
+    position: absolute;
+    text-decoration: none;
+    font-weight: 900;
+    left: 0;
+    margin-left: 2vw;
+    margin-top: 1vw;
+    color: black;
+}
+
+form#auth-form{
+    margin-right: 15vw;
+    display: flex;
+    gap: 2vw;
+    align-items: center;
+}
+
+input {
+    border: none;
+    border-radius: 1vw;
+    padding: 0.8vw;
+    background-color: rgb(215, 215, 215);
+}
+
+input[type='submit'] {
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 0.8vw 2vw;
+    background-color: rgb(144, 255, 144);
+}
+
+input[type='submit']:hover {
+    background-color: rgb(89, 255, 89);
+    transition: 0.5s;
+}
+
+header button{
+    transition: 0.2s;
+    border: none;
+    border-radius: 1vw;
+    background: none;
+    position: absolute;
+    margin-top: 1.1vw;
+    margin-right: 4vw;
+    font-size: 1vw;
+    font-weight: 300;
+    padding: 0.8vw 2vw;
+}
+
+header button:hover{
+    background-color: rgb(144, 255, 144);
+    transition: 0.5s;
+}
+
+/* main styles */
+
+main h1 {
+    margin: 2vw 0;
+    text-align: center;
+}
+
+main #auc-box{
+    margin: 0 10vw;
+    padding: 2vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5vw;
+}
+
+#auc-box .auc-cont{
+    background-color: rgb(202, 202, 202);
+    border-radius: 1vw;
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+    position: relative;
+}
+
+.auc-cont ol{
+    align-self: start;
+    word-wrap: balance;
+}
+
+.auc-cont button {
+    transition: 0.2s;
+    margin-top: auto;
+    border: none;
+    background-color: rgb(144, 255, 144);
+    padding: 0.8vw 1vw;
+    border-radius: 1vw;
+    font-weight: 600;
+    font-size: 1vw;
+}
+
+.auc-cont button:hover{
+    background-color: rgb(68, 255, 68);
+    transition: 0.5s;
+}
+
+/* dialog styles */
+
+dialog{
+    margin: 0 auto;
+    width: 30%;
+    border: none;
+    border-radius: 1vw;
+    background-color: rgb(219, 255, 216, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 4;
+    padding-bottom: 3vw;
+}
+
+dialog form#reg-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+}
+
+dialog form#reg-form input:not(input[type="submit"]){
+    width: 20vw;
+    background-color: white;
+}
+
+dialog button.close-button {
+    transition: 0.2s;
+    border: none;
+    background-color: white;
+    padding: 0.2vw 0.5vw;
+    border-radius: 0.3vw;
+}
+
+dialog button.close-button:hover{
+    background-color: rgb(219, 219, 219);
+    transition: 0.5s;
+}
