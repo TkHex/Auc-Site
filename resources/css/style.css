@@ -2,6 +2,11 @@
     margin: 0;
     font-family: "Roboto", sans-serif;
 }
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
 header {
     display: flex;
     justify-content: end;
@@ -64,6 +69,17 @@ header button:hover{
     transition: 0.5s;
 }
 
+header .hide-bt{
+    position: absolute;
+    left: 14vw;
+    font-size: 1.5vw;
+    padding: 0.5vw 0.8vw;
+}
+
+header .hide-bt:nth-of-type(2){
+    left: 25vw;
+}
+
 /* main styles */
 
 main h1 {
@@ -112,9 +128,10 @@ main #auc-box{
     transition: 0.5s;
 }
 
-/* dialog styles */
+/* dialog reg styles */
 
 dialog{
+    top: 7vw;
     margin: 0 auto;
     width: 30%;
     border: none;
@@ -149,3 +166,18 @@ dialog button.close-button:hover{
     background-color: rgb(219, 219, 219);
     transition: 0.5s;
 }
+
+/* dialog control styles */
+
+dialog form#control-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+}
+
+dialog form#control-form input:not(input[type="submit"]){
+    width: 20vw;
+    background-color: white;
+}
+

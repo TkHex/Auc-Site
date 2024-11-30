@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Auc_site/1.0.0": {
+        "dependencies": {
+          "Webtech": "1.0.1.4"
+        },
+        "runtime": {
+          "Auc_site.dll": {}
+        }
+      },
+      "Webtech/1.0.1.4": {
+        "runtime": {
+          "Webtech.dll": {
+            "assemblyVersion": "1.0.1.4",
+            "fileVersion": "1.0.1.4"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Auc_site/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Webtech/1.0.1.4": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

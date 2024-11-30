@@ -1,0 +1,8 @@
+[
+    {
+        "Name": "Test",
+        "Url": "test",
+        "AuthRequired": false,
+        "Method": "GET"
+    }
+]

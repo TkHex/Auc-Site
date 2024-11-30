@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,24 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auctions</title>
     <link rel="stylesheet" href="./resources/css/style.css">
-    <script src="./resources/js/RegFormLogic.js"></script>
+    <script src="./resources/js/FormLogic.js"></script>
 </head>
 <body>
     <header>
         <h1>
             <a href="index.html">AUC.RU</a>
         </h1>
+        <button class = "hide-bt" onclick = "openForm('control-dialog')">Управление</button>
+        <button class = "hide-bt" onclick = "">Пользователи</button>
         <form id="auth-form" action="">
             <input type="text" name = "login" placeholder="Login">
             <input type="text" name = "password" placeholder="Password">
             <input type="submit" value = "Войти">
         </form>
-        <button onclick="openRegForm()">Регистрация</button>
+        <button onclick="openForm('reg-dialog')">Регистрация</button>
     </header>
     <main>
         <dialog id="reg-dialog">
             <div class="reg-page">
-                <button class="close-button" onclick="closeRegForm()">X</button>
+                <button class="close-button" onclick="closeForm('reg-dialog')">X</button>
                 <h1>Регистрация</h1>
                 <form  id = "reg-form" action="" method="post">
                     <input type="text" name = "login" placeholder="Login">
@@ -35,6 +38,44 @@
                 </form>
             </div>
         </dialog>
+
+        <dialog id="control-dialog">
+            <div class="control-page">
+                <button class="close-button" onclick="closeForm('control-dialog')">X</button>
+                <h1>Добавить аукцион</h1>
+                <form  id = "control-form" action="" method="post">
+                    <input type="text" name = "auct_name" placeholder="Auction name">
+                    <input type="text" name = "lot_name" placeholder="Lot name">
+                    <input type="datetime-local" name = "starting_date" placeholder="Starting date">
+                    <input type="datetime-local" name = "ending_date" placeholder="Ending_date">
+                    <input type="number" name = "auct_step" placeholder="Step">
+                    <input type="submit" value="Создать">
+                </form>
+            </div>
+        </dialog>
+
+        <dialog id="user-dialog" open>
+            <div class="user-page">
+                <button class="close-button" onclick="closeForm('control-dialog')">X</button>
+                <h1>Все пользователи</h1>
+                <div id="user-block">
+                    <form class = "user-info" action ="/user/update">
+                        <input readonly value="ID" name="id" class="user-id">
+                        <input readonly value="Фамилия" class="user-lname">
+                        <input readonly value="Имя" class="user-name">
+                        <input readonly value="Отчество" class="user-mname">
+                        <input readonly value="Реквизиты" class="user-bank">
+                        <select name="role_id" class="user-role" onchange="updateUser(0)">
+                            <option value="1">Администратор</option>
+                            <option value="2">Аукционер</option>
+                            <option value="3" selected>Участник</option>
+                        </select>
+                    </form>
+                    
+                </div>
+            </div>
+        </dialog>
+
         <h1 class="title-main">Главная</h1>
         <div id="auc-box">
             <div class="auc-cont">
