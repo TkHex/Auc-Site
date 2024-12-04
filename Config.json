@@ -1,7 +1,13 @@
 [
     {
-        "Name": "Test",
-        "Url": "test",
+        "Name": "Resource",
+        "Url": "\\/resources\\/\\w+\\/\\w+\\.(css|js)",
+        "AuthRequired": false,
+        "Method": "GET"
+    },
+    {
+        "Name": "Page",
+        "Url": "\\w+",
         "AuthRequired": false,
         "Method": "GET"
     }
