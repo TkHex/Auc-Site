@@ -77,7 +77,7 @@ header div#welcome{
 }
 
 header button.button-reg{
-    display: block; /* При успешной авторизации - display: none*/
+    display: flex; /* При успешной авторизации - display: none*/
 }
 
 form#auth-form{
@@ -199,6 +199,10 @@ main #auc-box{
 
 /* dialog reg styles */
 
+main dialog#reg-dialog h1{
+    margin: 0vw 0 1.5vw 0;
+}
+
 dialog form#reg-form{
     display: flex;
     flex-direction: column;
@@ -218,6 +222,7 @@ dialog button.close-button {
     padding: 0.2vw 0.5vw;
     border-radius: 0.3vw;
     font-size: 2vw;
+    height: 4vw;
 }
 
 dialog button.close-button:hover{
@@ -226,6 +231,12 @@ dialog button.close-button:hover{
 }
 
 /* dialog control styles */
+
+dialog#control-dialog{
+    display: flex;
+    gap: 1vw;
+    width: 50vw;
+}
 
 dialog form#control-form{
     display: flex;
@@ -237,6 +248,11 @@ dialog form#control-form{
 dialog form#control-form input:not(input[type="submit"]){
     width: 20vw;
     background-color: white;
+}
+
+input.second-b{
+    position: absolute;
+    top: 27.6vw;
 }
 
 /* dialog user styles */

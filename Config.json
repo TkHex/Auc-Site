@@ -6,8 +6,32 @@
         "Method": "GET"
     },
     {
+        "Name": "GetUsers",
+        "Url": "\/users\/all",
+        "AuthRequired": false,
+        "Method": "GET"
+    },
+    {
+        "Name": "GetAuctionById",
+        "Url": "\/auc\\?id=\\d+",
+        "AuthRequired": false,
+        "Method": "GET"
+    },
+    {
+        "Name": "CreateAuction",
+        "Url": "\/auc\/create",
+        "AuthRequired": false,
+        "Method": "POST"
+    },
+    {
+        "Name": "GetLotById",
+        "Url": "\/lot\\?id=\\d+",
+        "AuthRequired": false,
+        "Method": "GET"
+    },
+    {
         "Name": "Page",
-        "Url": "\\w+",
+        "Url": "\/\\w+",
         "AuthRequired": false,
         "Method": "GET"
     }

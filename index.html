@@ -53,16 +53,25 @@
         <!-- Control Dialog -->
 
         <dialog id="control-dialog">
+            <button class="close-button" onclick="closeForm('control-dialog')">X</button>
             <div class="control-page">
-                <button class="close-button" onclick="closeForm('control-dialog')">X</button>
                 <h1>Добавить аукцион</h1>
-                <form  id = "control-form" action="" method="post">
+                <form  id = "control-form" action="/auc/create" method="post">
                     <input type="text" name = "auct_name" placeholder="Auction name">
                     <input type="text" name = "lot_name" placeholder="Lot name">
                     <input type="datetime-local" name = "starting_date" placeholder="Starting date">
                     <input type="datetime-local" name = "ending_date" placeholder="Ending_date">
                     <input type="number" name = "auct_step" placeholder="Step">
                     <input type="submit" value="Создать">
+                </form>
+            </div>
+            <div class="control-page">
+                <h1>Добавить Лот</h1>
+                <form  id = "control-form" action="/lot/create" method="post">
+                    <input type="text" name = "lot_name" placeholder="Lot name">
+                    <input type="text" name = "description" placeholder="Description">
+                    <input type="number" name = "start_price" placeholder="Starting Price">
+                    <input type="submit" value="Создать" class = "second-b">
                 </form>
             </div>
         </dialog>

@@ -1,13 +1,17 @@
-using System.Net;
-using Request = System.Net.HttpListenerRequest;
-using Response = System.Net.HttpListenerResponse;
-using static System.IO.File;
+global using System.Net;
+global using System.Text;
+global using System.Text.Json;
+global using System.Linq;
+global using Request = System.Net.HttpListenerRequest;
+global using Response = System.Net.HttpListenerResponse;
+global using static System.IO.File;
 
 namespace AucSite;
 
-public class ApiImpl {
+public partial class ApiImpl {
     public static string WorkDir = "I:/Учеба/3й курс/5 семак/Лабы/Безопасность БД/Лаба 1/Auc_site/";
     public static Logger logger = new() {LogFile = $"{WorkDir}journal.log"};
+    static ApplicationContext db = new();
 
     public static void Page(Request req, Response res) {
         if(Exists($"{WorkDir}{req.RawUrl}.html"))
