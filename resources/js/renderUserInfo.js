@@ -9,7 +9,7 @@ function renderUserInfo() {
         form.innerHTML = `<input readonly value="${users[i].id}" name="id" class="user-id">
                         <input readonly value="${users[i].lastname}" class="user-lname">
                         <input readonly value="${users[i].name}" class="user-name">
-                        <input readonly value="${users[i].middlename}" class="user-mname">
+                        <input readonly value="${users[i].middle_name}" class="user-mname">
                         <input readonly value="${users[i].bank}" class="user-bank">
                         <select name="role_id" class="user-role" onchange="updateUser(${i})">
                             <option value="1">Администратор</option>

@@ -12,6 +12,18 @@
         "Method": "GET"
     },
     {
+        "Name": "UserRegistration",
+        "Url": "\/user\/add",
+        "AuthRequired": false,
+        "Method": "POST"
+    },
+    {
+        "Name": "GetAuctions",
+        "Url": "\/auc\/all",
+        "AuthRequired": false,
+        "Method": "GET"
+    },
+    {
         "Name": "GetAuctionById",
         "Url": "\/auc\\?id=\\d+",
         "AuthRequired": false,
@@ -28,6 +40,18 @@
         "Url": "\/lot\\?id=\\d+",
         "AuthRequired": false,
         "Method": "GET"
+    },
+    {
+        "Name": "GetLotsForAuction",
+        "Url": "\/lot\/for_auc\\?auc_id=\\d+",
+        "AuthRequired": false,
+        "Method": "GET"
+    },
+    {
+        "Name": "CreateLot",
+        "Url": "\/lot\/create",
+        "AuthRequired": false,
+        "Method": "POST"
     },
     {
         "Name": "Page",

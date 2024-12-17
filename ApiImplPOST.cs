@@ -3,50 +3,43 @@ namespace AucSite;
 public partial class ApiImpl {
     
     public static void CreateAuction(Request req, Response res) {
-        using (var reader = new StreamReader(req.InputStream, new UTF8Encoding())) {
-            var requestBody = reader.ReadToEnd();
-
-            var newAuction = JsonSerializer.Deserialize<Auction>(requestBody);
-
-            if (newAuction != null) {
-                db.Auctions.Add(newAuction);
-                db.SaveChanges();
-                res.ResponseText("Auction created successfully.");
-            } else {
-                res.ResponseError((int)HttpStatusCode.BadRequest, "Invalid auction data!");
-            }
-        }
+        var form_info = req.ParseForm();
+        Auction a = new() {
+            auct_name = form_info["auct_name"],
+            lot_name = form_info["lot_name"],
+            starting_date = form_info["starting_date"],
+            ending_date = form_info["ending_date"],
+            auct_step = form_info["auct_step"],
+        };
+        db.Lots.Add(a);
+        db.SaveChanges();
+        res.ResponseText("Auction was added.");
     }
 
     public static void CreateLot(Request req, Response res) {
-        using (var reader = new StreamReader(req.InputStream, new UTF8Encoding())) {
-            var requestBody = reader.ReadToEnd();
-
-            var newLot = JsonSerializer.Deserialize<Lot>(requestBody);
-
-            if (newLot != null) {
-                db.Lots.Add(newLot);
-                db.SaveChanges();
-                res.ResponseText("Lot created successfully.");
-            } else {
-                res.ResponseError((int)HttpStatusCode.BadRequest, "Invalid lot data!");
-            }
-        }
+        var form_info = req.ParseForm();
+        Lot l = new() {
+            lot_name = form_info["lot_name"],
+            description = form_info["description"],
+            start_price = form_info["start_price"],
+        };
+        db.Lots.Add(l);
+        db.SaveChanges();
+        res.ResponseText("Lot was added.");
     }
 
     public static void UserRegistration(Request req, Response res) {
-        using (var reader = new StreamReader(req.InputStream, new UTF8Encoding())) {
-            var requestBody = reader.ReadToEnd();
-
-            var newUser = JsonSerializer.Deserialize<User>(requestBody);
-
-            if (newUser != null) {
-                db.Users.Add(newUser);
-                db.SaveChanges();
-                res.ResponseText("User was registered.");
-            } else {
-                res.ResponseError((int)HttpStatusCode.BadRequest, "Invalid user!");
-            }
-        }
+        var form_info = req.ParseForm();
+        User u = new() {
+            login = form_info["login"],
+            lastname = form_info["lastname"],
+            name = form_info["name"],
+            middle_name = form_info["middle_name"],
+            bank_info = form_info["bank_info"],
+            password = form_info["password"], //Тут будет хеша!
+        };
+        db.Users.Add(u);
+        db.SaveChanges();
+        res.ResponseText("User was registered.");
     }
 }
