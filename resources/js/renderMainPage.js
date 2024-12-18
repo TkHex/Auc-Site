@@ -19,6 +19,7 @@ async function renderMainPage() {
 
             const auctionElement = `
                 <div class="auc-cont">
+                    <button class="redact-button" onclick="openForm('redact-dialog')">&#9998;</button>
                     <h2>${auc.auct_name}</h2>
                     <p>Дата начала: ${new Date(auc.starting_date).toLocaleString()}</p>
                     <p>Дата окончания: ${new Date(auc.ending_date).toLocaleString()}</p>

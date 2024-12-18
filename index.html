@@ -54,26 +54,28 @@
         <!-- Control Dialog -->
 
         <dialog id="control-dialog">
-            <button class="close-button" onclick="closeForm('control-dialog')">X</button>
-            <div class="control-page">
-                <h1>Добавить аукцион</h1>
-                <form  id = "control-form" action="/auc/create" method="post">
-                    <input required type="text" name = "auct_name" placeholder="Auction name" >
-                    <input required type="text" name = "lot_name" placeholder="Lot name">
-                    <input required type="datetime-local" name = "starting_date" placeholder="Starting date">
-                    <input required type="datetime-local" name = "ending_date" placeholder="Ending_date">
-                    <input required type="number" name = "auct_step" placeholder="Step">
-                    <input type="submit" value="Создать" onclick = "alert('Ставка сделана, ставок больше нет')">
-                </form>
-            </div>
-            <div class="control-page">
-                <h1>Добавить Лот</h1>
-                <form  id = "control-form" action="/lot/create" method="post">
-                    <input required type="text" name = "lot_name" placeholder="Lot name">
-                    <input required type="text" name = "description" placeholder="Description">
-                    <input required type="number" name = "start_price" placeholder="Starting Price">
-                    <input type="submit" value="Создать" class = "second-b">
-                </form>
+            <div class="control-box">
+                <button class="close-button" onclick="closeForm('control-dialog')">X</button>
+                <div class="control-page">
+                    <h1>Добавить аукцион</h1>
+                    <form  id = "control-form" action="/auc/create" method="post">
+                        <input required type="text" name = "auct_name" placeholder="Auction name" >
+                        <input required type="text" name = "lot_name" placeholder="Lot name">
+                        <input required type="datetime-local" name = "starting_date" placeholder="Starting date">
+                        <input required type="datetime-local" name = "ending_date" placeholder="Ending_date">
+                        <input required type="number" name = "auct_step" placeholder="Step">
+                        <input type="submit" value="Создать" onclick = "alert('Ставка сделана, ставок больше нет')">
+                    </form>
+                </div>
+                <div class="control-page">
+                    <h1>Добавить Лот</h1>
+                    <form  id = "control-form" action="/lot/create" method="post">
+                        <input required type="text" name = "lot_name" placeholder="Lot name">
+                        <input required type="text" name = "description" placeholder="Description">
+                        <input required type="number" name = "start_price" placeholder="Starting Price">
+                        <input type="submit" value="Создать" class = "second-b">
+                    </form>
+                </div>
             </div>
         </dialog>
 
@@ -100,33 +102,24 @@
             </div>
         </dialog>
 
+
+        <dialog id="redact-dialog">
+            <div class="redact-box">
+                <button class="close-button" onclick="closeForm('redact-dialog')">X</button>
+                <h1>Редактирование аукциона</h1>
+                <form action="#">
+                    <input required type="text" name = "auct_name" placeholder="Auction name" >
+                    <input required type="text" name = "lot_name" placeholder="Lot name">
+                    <input required type="datetime-local" name = "starting_date" placeholder="Starting date">
+                    <input required type="datetime-local" name = "ending_date" placeholder="Ending_date">
+                    <input required type="number" name = "auct_step" placeholder="Step">
+                    <input type="submit" value="Сохранить" onclick = "alert('Редактирование завершено!')">
+                </form>
+            </div>
+        </dialog>
         <!-- Auctions -->
 
         <div id="auc-box">
-            <!-- <div class="auc-cont">
-                <h2>Название аукциона</h2>
-                <p>Дата начала: 22.22.2024 00:00</p>
-                <p>Дата окончания: 23.22.2024 00:00</p>
-                <ol>
-                    <li>Лот 1</li>
-                    <li>Лот 2</li>
-                    <li>Лот 3</li>
-                </ol>
-                
-                <button onclick = "alert('Ставка сделана, ставок больше нет')">Сделать ставку</button>
-            </div>
-            <div class="auc-cont">
-                <h2>Название аукциона</h2>
-                <p>Дата начала: 22.22.2024 00:00</p>
-                <p>Дата окончания: 23.22.2024 00:00</p>
-                <ol>
-                    <li>Лот 1</li>
-                    <li>Лот 2</li>
-                    <li>Лот 3</li>
-                    <li>Лот 4</li>
-                </ol>
-                <button onclick = "alert('Ставка сделана, ставок больше нет')">Сделать ставку</button>
-            </div> -->
         </div>
 
     </main>

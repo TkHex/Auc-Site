@@ -18,6 +18,12 @@
         "Method": "POST"
     },
     {
+        "Name": "UserRegistration",
+        "Url": "\/user\/add",
+        "AuthRequired": false,
+        "Method": "POST"
+    },
+    {
         "Name": "GetAuctions",
         "Url": "\/auc\/all",
         "AuthRequired": false,
@@ -34,6 +40,12 @@
         "Url": "\/auc\/create",
         "AuthRequired": false,
         "Method": "POST"
+    },
+    {
+        "Name": "GetLots",
+        "Url": "\/lot\/all",
+        "AuthRequired": false,
+        "Method": "GET"
     },
     {
         "Name": "GetLotById",

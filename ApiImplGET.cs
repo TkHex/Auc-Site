@@ -21,6 +21,12 @@ public partial class ApiImpl {
         )
     );
 
+    public static void GetLots(Request req, Response res) => SendContent(in res,
+        JsonSerializer.Serialize(
+            db.Lots.ToArray()
+        )
+    );
+
     public static void GetAuctionById(Request req, Response res) {
         int auctionId;
         if (int.TryParse(req.QueryString["id"], out auctionId)) {

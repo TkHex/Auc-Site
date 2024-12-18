@@ -5,6 +5,8 @@ global using System.Linq;
 global using Request = System.Net.HttpListenerRequest;
 global using Response = System.Net.HttpListenerResponse;
 global using static System.IO.File;
+global using System.Security.Cryptography;
+global using System.Text;
 
 namespace AucSite;
 
