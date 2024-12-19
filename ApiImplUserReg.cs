@@ -1,7 +1,8 @@
 namespace AucSite;
 
-public partial class ApiImpl {
+#nullable disable
 
+public partial class ApiImpl {
     private static string HashPassword(string password) {
         using (var hmac = new HMACSHA256()) {
             // Генерируем соль
@@ -22,7 +23,7 @@ public partial class ApiImpl {
         byte[] storedPasswordHash = Convert.FromBase64String(parts[1]);
 
         using (var hmac = new HMACSHA256(salt)) {
-            // Хешируем введенный пароль с тем же солью
+            // Хешируем введенный пароль с той же солью
             byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(enteredPassword));
 
             // Сравниваем хеши
@@ -38,16 +39,16 @@ public partial class ApiImpl {
             name = form_info["name"],
             middle_name = form_info["middle_name"],
             bank_info = form_info["bank_info"],
-            password = HashPassword(form_info["password"]), //Тут будет хеша!
+            password = HashPassword(form_info["password"]), //Тут есть хеша!
         };
         db.Users.Add(u);
         db.SaveChanges();
         res.ResponseText("User was registered.");
-    }
-
+    } 
     public static void UserLogin(Request req, Response res) {
-        string login = req.Form["login"];
-        string password = req.Form["password"];
+        var form_info = req.ParseForm();
+        string login = form_info["login"];
+        string password = form_info["password"];
 
         if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password)) {
             res.ResponseError((int)HttpStatusCode.BadRequest, "Login and password are required!");
@@ -55,19 +56,14 @@ public partial class ApiImpl {
         }
         var user = db.Users.FirstOrDefault(u => u.login == login);
         if (user != null) {
-            // Проверка пароля
             if (VerifyPassword(password, user.password)) {
-                // Успешная авторизация
                 res.ResponseText("Login successful.");
-                // Здесь можно установить сессию пользователя или выполнить другие действия.
+                // Тут возможна сессия
             } else {
-                // Неверный пароль
                 res.ResponseError((int)HttpStatusCode.Unauthorized, "Invalid login or password.");
             }
         } else {
-            // Пользователь не найден
             res.ResponseError((int)HttpStatusCode.Unauthorized, "Invalid login or password.");
         }
     }
-
 }

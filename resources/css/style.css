@@ -69,7 +69,7 @@ header h1 a{
 }
 
 header div#welcome{
-    display: none; /* При успешной авторизации - display: block*/
+    display: none; /* При успешной авторизации - display: block | если не авторизирован - display: none*/
     font-size: 1.4vw;
     position: absolute;
     right: 10vw;
@@ -77,12 +77,12 @@ header div#welcome{
 }
 
 header button.button-reg{
-    display: flex; /* При успешной авторизации - display: none*/
+    display: flex; /* При успешной авторизации - display: none | если не авторизирован - display: flex*/
 }
 
 form#auth-form{
     margin-right: 15vw;
-    display: flex; /* При успешной авторизации - display: none*/
+    display: flex; /* При успешной авторизации - display: none | если не авторизирован - display: flex*/
     gap: 1.5vw;
     align-items: center;
 }
@@ -252,6 +252,15 @@ dialog form#control-form input:not(input[type="submit"]){
     background-color: white;
 }
 
+dialog form#control-form select{
+    font-size: 1vw;
+    width: 21.6vw;
+    background-color: white;
+    border: none;
+    border-radius: 1vw;
+    height: 3vw;
+}
+
 input.second-b{
     position: absolute;
     top: 27.6vw;
@@ -325,3 +334,63 @@ dialog#redact-dialog form{
     flex-direction: column;
     gap: 1vw;
 }
+
+dialog#redact-dialog form input:not(input[type="submit"]){
+    background-color: white;
+}
+
+.lots-box {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 1vw;
+    padding: 1.5vw;
+    margin-left: 2vw;
+    height: 7vw;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    font-size: 1vw;
+}
+
+.lot-cont {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    background-color: rgb(245, 245, 245);
+    padding: 0.5vw;
+    border-radius: 1vw;
+}
+
+input[type="checkbox"] {
+    display: none; /* Скрываем стандартный чекбокс */
+}
+
+.lot-span {
+    display: inline-block;
+    width: 1vw;
+    height: 1vw;
+    border-radius: 0.5vw;
+    cursor: pointer;
+    border: 0.2vw solid rgb(139, 255, 139);
+    position: relative;
+}
+
+.lot-span::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.4vw;
+    height: 0.8vw;
+    border: solid white;
+    border-width: 0 0.1vw 0.1vw 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 0; /* Скрываем галочку */
+    transition: opacity 0.2s ease; /* Добавляем анимацию перехода */
+}
+
+input[type="checkbox"]:checked + .lot-span::after {
+    opacity: 1; /* Показываем галочку, когда чекбокс выбран */
+}
+
+
