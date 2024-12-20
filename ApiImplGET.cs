@@ -9,6 +9,7 @@ public partial class ApiImpl {
             writer.Flush();
         }
     }
+    [RoleRequirement(Roles.Admin)]
     public static void GetUsers(Request req, Response res) => SendContent(in res,
         JsonSerializer.Serialize(
             db.Users.ToArray()
@@ -57,13 +58,12 @@ public partial class ApiImpl {
 
     public static void GetLotsForAuction(Request req, Response res) {
         int aucId;
-        if(int.TryParse(req.QueryString["auc_id"], out aucId)){
-            var lots = JsonSerializer.Serialize(
-                (from l in db.Lots
-                where l.id_auction == aucId
-                select l).ToArray()
-            );
-            SendContent(in res, lots);
+        if(int.TryParse(req.QueryString["auc_id"], out aucId)) {
+            var lots = db.Lots.Where(l => l.id_auction == aucId).ToArray();
+            if(lots.Length > 0)
+                SendContent(in res, JsonSerializer.Serialize(lots));
+            else
+                res.ResponseError((int)HttpStatusCode.NotFound, "Lots are not found.");
         } else
             res.ResponseError((int)HttpStatusCode.BadRequest, "Auction id is required!");
     }

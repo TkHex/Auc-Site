@@ -53,7 +53,7 @@
 
         <!-- Control Dialog -->
 
-        <dialog id="control-dialog" open>
+        <dialog id="control-dialog">
             <div class="control-box">
                 <button class="close-button" onclick="closeForm('control-dialog')">X</button>
                 <div class="control-page">
@@ -68,24 +68,35 @@
                 </div>
                 <div class="control-page">
                     <h1>Список доступных лотов</h1>
-                    <div class="lots-box">
-                        <div class="lot-cont"><input type="checkbox"><span class="lot-span"></span>Лот 1</div>
-                        <div class="lot-cont"><input type="checkbox" data-lot_id="NULL"><span class="lot-span"></span>Лот 2</div>
-                        <div class="lot-cont"><input type="checkbox"><span class="lot-span"></span>Лот 3</div>
-                        <div class="lot-cont"><input type="checkbox"><span class="lot-span"></span>Лот 4</div>
-                        <div class="lot-cont"><input type="checkbox"><span class="lot-span"></span>Лот 4</div>
-                        <div class="lot-cont"><input type="checkbox"><span class="lot-span"></span>Лот 4</div>
-                        <div class="lot-cont"><input type="checkbox"><span class="lot-span"></span>Лот 4</div>
+                    <div class="lot-box">
+                        <form id="lots-form" action="" method="">
+                            <select name="lot_name" id="" multiple>
+                                <option value="">Лот 1</option>
+                                <option value="">Лот 2</option>
+                                <option value="">Лот 3</option>
+                                <option value="">Лот 4</option>
+                            </select>
+                        </form>
                     </div>
-                    <button type="button" onclick="openForm('lot-dialog')">Создать лот</button>
+                    <button type="button" class="create-lot" onclick="openForm('lot-dialog')">Создать новый лот</button>
                 </div>
             </div>
         </dialog>
 
         <!-- Lot dialog -->
 
-        <dialog id="lot-dialog">
-
+        <dialog id="lot-dialog" open>
+            <div class="lot-cont">
+                <button class="close-button" onclick="closeForm('lot-dialog')">X</button>
+                <h1>Добавить лот</h1>
+                <div class="lot-page">
+                    <form  id = "lot-form" action="/lot/create" method="post">
+                        <input required type="text" name = "lot_name" placeholder="Lot name" >
+                        <input required type="text" name = "description" placeholder="Description">
+                        <input required type="number" name = "start_price" placeholder="Start price">
+                        <input type="submit" value="Создать">
+                    </form>
+                </div>
         </dialog>
 
         <!-- User Dialog -->

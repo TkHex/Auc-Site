@@ -266,6 +266,77 @@ input.second-b{
     top: 27.6vw;
 }
 
+dialog#control-dialog div.control-page:nth-of-type(2){
+    margin: 0vw 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+dialog#control-dialog button.create-lot {
+    border-radius: 1vw;
+    margin-top: 2.1vw;
+    border: none;
+    font-size: 1vw;
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 0.8vw 2vw;
+    background-color: rgb(144, 255, 144);
+}
+
+dialog#control-dialog button.create-lot:hover {
+    background-color: rgb(89, 255, 89);
+    transition: 0.5s;
+}
+
+dialog#control-dialog div.lot-box{
+    width: 80%;
+    background-color: rgb(0, 0, 0, 0.45);
+    padding: 1.5vw;
+    border-radius: 1vw;
+    height: 8vw;
+    overflow: hidden;
+}
+
+dialog#control-dialog form#lots-form{
+    width: 100%;
+    background: transparent;
+    height: 100%;
+    overflow: hidden;
+}
+
+dialog#control-dialog form#lots-form select{
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-size: 1vw;
+    height: 100%;
+}
+
+dialog#control-dialog form#lots-form select::-webkit-scrollbar{
+    display: none;
+}
+
+dialog#control-dialog form#lots-form select option{
+    white-space: normal;
+    transition: 0.3s;
+    margin-bottom: 1vw;
+    padding: 0.7vw;
+    border-radius: 1vw;
+    margin-right: 0.5vw;
+    background-color: #78ff83;
+}
+
+dialog#control-dialog form#lots-form select option:hover{
+    background-color: #3ef24d;
+    transition: 0.3s;
+    color: black;
+}
+
+dialog#control-dialog form#lots-form select:focus{
+    outline: transparent;
+}
+
 /* dialog user styles */
 
 dialog#user-dialog {
@@ -339,58 +410,17 @@ dialog#redact-dialog form input:not(input[type="submit"]){
     background-color: white;
 }
 
-.lots-box {
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 1vw;
-    padding: 1.5vw;
-    margin-left: 2vw;
-    height: 7vw;
-    overflow-y: auto;
+/* Lot dialog styles */
+
+dialog#lot-dialog form{
     display: flex;
     flex-direction: column;
     gap: 1vw;
-    font-size: 1vw;
-}
-
-.lot-cont {
-    display: flex;
     align-items: center;
-    gap: 1vw;
-    background-color: rgb(245, 245, 245);
-    padding: 0.5vw;
-    border-radius: 1vw;
 }
 
-input[type="checkbox"] {
-    display: none; /* Скрываем стандартный чекбокс */
+dialog form#lot-form input:not(input[type="submit"]){
+    width: 20vw;
+    background-color: white;
+    color: black;
 }
-
-.lot-span {
-    display: inline-block;
-    width: 1vw;
-    height: 1vw;
-    border-radius: 0.5vw;
-    cursor: pointer;
-    border: 0.2vw solid rgb(139, 255, 139);
-    position: relative;
-}
-
-.lot-span::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 0.4vw;
-    height: 0.8vw;
-    border: solid white;
-    border-width: 0 0.1vw 0.1vw 0;
-    transform: translate(-50%, -50%) rotate(45deg);
-    opacity: 0; /* Скрываем галочку */
-    transition: opacity 0.2s ease; /* Добавляем анимацию перехода */
-}
-
-input[type="checkbox"]:checked + .lot-span::after {
-    opacity: 1; /* Показываем галочку, когда чекбокс выбран */
-}
-
-

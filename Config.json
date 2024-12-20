@@ -66,6 +66,12 @@
         "Method": "POST"
     },
     {
+        "Name": "GetRole",
+        "Url": "\/getrole",
+        "AuthRequired": true,
+        "Method": "GET"
+    },
+    {
         "Name": "Page",
         "Url": "\/\\w+",
         "AuthRequired": false,

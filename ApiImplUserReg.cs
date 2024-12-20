@@ -7,17 +7,15 @@ public partial class ApiImpl {
         using (var hmac = new HMACSHA256()) {
             // Генерируем соль
             byte[] salt = hmac.Key;
-
             // Хешируем пароль
             byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-
             // Сохраняем соль и хеш как Base64 строки
             return Convert.ToBase64String(salt) + ":" + Convert.ToBase64String(hash);
         }
     }
 
     private static bool VerifyPassword(string enteredPassword, string storedHash) {
-    // Разделяем соль и хеш
+        // Разделяем соль и хеш
         var parts = storedHash.Split(':');
         byte[] salt = Convert.FromBase64String(parts[0]);
         byte[] storedPasswordHash = Convert.FromBase64String(parts[1]);
@@ -25,7 +23,6 @@ public partial class ApiImpl {
         using (var hmac = new HMACSHA256(salt)) {
             // Хешируем введенный пароль с той же солью
             byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(enteredPassword));
-
             // Сравниваем хеши
             return hash.SequenceEqual(storedPasswordHash);
         }
@@ -54,16 +51,21 @@ public partial class ApiImpl {
             res.ResponseError((int)HttpStatusCode.BadRequest, "Login and password are required!");
             return;
         }
+
         var user = db.Users.FirstOrDefault(u => u.login == login);
-        if (user != null) {
-            if (VerifyPassword(password, user.password)) {
-                res.ResponseText("Login successful.");
-                // Тут возможна сессия
-            } else {
-                res.ResponseError((int)HttpStatusCode.Unauthorized, "Invalid login or password.");
-            }
+        if (user != null && VerifyPassword(password, user.password)) {
+            var t = accessor.Authorize(res);
+            roler.AssociateRole(t.Value, (Roles)user.id_role);
+            res.ResponseText($"Login successful.");
         } else {
             res.ResponseError((int)HttpStatusCode.Unauthorized, "Invalid login or password.");
         }
+    }
+    public static void GetRole(Request req, Response res) {
+        var t = req.Cookies["ac_token"]?.Value;
+        if(t != null)
+            res.ResponseText(((int)roler.GetRole(t)).ToString());
+        else
+            res.ResponseError((int)HttpStatusCode.BadRequest, "No token for getting role.");
     }
 }
