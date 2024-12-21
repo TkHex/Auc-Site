@@ -41,6 +41,7 @@ public partial class ApiImpl {
         db.Users.Add(u);
         db.SaveChanges();
         res.ResponseText("User was registered.");
+        res.Redirect("/index");
     } 
     public static void UserLogin(Request req, Response res) {
         var form_info = req.ParseForm();
@@ -56,13 +57,18 @@ public partial class ApiImpl {
         if (user != null && VerifyPassword(password, user.password)) {
             var t = accessor.Authorize(res);
             roler.AssociateRole(t.Value, (Roles)user.id_role);
-            res.ResponseText($"Login successful.");
+            res.ResponseText("Login successful.");
+            logger.Info("UserLogin", $"Logined user {user.name}");
         } else {
             res.ResponseError((int)HttpStatusCode.Unauthorized, "Invalid login or password.");
         }
     }
+    public static void Test(Request req, Response res) {
+        res.ResponseText($"Token:{req.Cookies["ac_token"].Value}\nAuthorization: {req.Headers["Authorization"]}");
+    }
     public static void GetRole(Request req, Response res) {
         var t = req.Cookies["ac_token"]?.Value;
+        logger.Debug("GetRole", t);
         if(t != null)
             res.ResponseText(((int)roler.GetRole(t)).ToString());
         else

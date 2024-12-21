@@ -6,6 +6,12 @@
         "Method": "GET"
     },
     {
+        "Name": "Test",
+        "Url": "\/user\/test",
+        "AuthRequired": false,
+        "Method": "GET"
+    },
+    {
         "Name": "GetUsers",
         "Url": "\/users\/all",
         "AuthRequired": false,
@@ -18,8 +24,8 @@
         "Method": "POST"
     },
     {
-        "Name": "UserRegistration",
-        "Url": "\/user\/add",
+        "Name": "UserLogin",
+        "Url": "\/user\/login",
         "AuthRequired": false,
         "Method": "POST"
     },
@@ -67,7 +73,7 @@
     },
     {
         "Name": "GetRole",
-        "Url": "\/getrole",
+        "Url": "\/user\/getrole",
         "AuthRequired": true,
         "Method": "GET"
     },

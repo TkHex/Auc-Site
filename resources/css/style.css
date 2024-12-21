@@ -72,8 +72,12 @@ header div#welcome{
     display: none; /* При успешной авторизации - display: block | если не авторизирован - display: none*/
     font-size: 1.4vw;
     position: absolute;
-    right: 10vw;
+    right: 13vw;
     align-self: center;
+}
+
+header button#welcome-but{
+    display:none; /* При успешной авторизации: display: block | если не авторизирован: display: none */
 }
 
 header button.button-reg{

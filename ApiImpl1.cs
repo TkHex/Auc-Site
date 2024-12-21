@@ -13,9 +13,9 @@ namespace AucSite;
 public partial class ApiImpl {
     public static string WorkDir = "I:/Учеба/3й курс/5 семак/Лабы/Безопасность БД/Лаба 1/Auc_site/";
     public static Logger logger = new() {LogFile = $"{WorkDir}journal.log"};
+    public static AccessManager accessor = new(1); //Для выдачи токенов авторизации, живущих 1 час
+    public static RolesManager<Roles> roler = new();
     static ApplicationContext db = new();
-    static AccessManager accessor = new(1); //Для выдачи токенов авторизации, живущих 1 час
-    static RolesManager<Roles> roler = new();
 
     public static void Page(Request req, Response res) {
         if(Exists($"{WorkDir}{req.RawUrl}.html"))

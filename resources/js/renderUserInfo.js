@@ -1,4 +1,6 @@
-function loadUsers() {}
+async function loadUsers() {
+    
+}
 
 function renderUserInfo() {
     let users = loadUsers()

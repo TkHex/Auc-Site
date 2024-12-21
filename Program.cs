@@ -5,7 +5,12 @@ namespace AucSite;
 
 class Program {
     public static void Main() {
-        var api = new REST_API("Config.json", typeof(ApiImpl));
+        var api = new REST_API(
+            "Config.json",                 //Файл конфига API
+            typeof(ApiImpl),               //Класс реализации API
+            ApiImpl.accessor.Authenticate, //Функция опознования пользователя
+            ApiImpl.roler.CheckRole        //Функция опознования роли пользователя
+        );
 
         var backend = new Server(api);
         backend.Work = true;
