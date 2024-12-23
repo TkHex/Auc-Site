@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="./resources/css/style.css">
     <script src="./resources/js/FormLogic.js"></script>
     <script src="./resources/js/renderMainPage.js"></script>
+    <script src="./resources/js/renderUserInfo.js"></script>
+    <script src="./resources/js/renderCreateAuc.js"></script>
 </head>
-<body onload="renderMainPage()">
+<body onload="renderMainPage(), loadLotsForCreateAuc()">
 
     <!-- Header html -->
 
@@ -32,7 +34,7 @@
     <!-- Main -->
 
     <main>
-        <h1 class="title-main">Братья элементы, мы нашли куки, но потеряли заголовок. Если кто то взял - верните пожалуйста. Вознаграждение - рабочий сайт, где вы сможете работать и зарабатывать на жизнь. Процент со ставки пойдет лично каждому в карман. Не упустите возможность помочь нам. Спасибо!</h1>
+        <h1 class="title-main">Главная</h1>
 
         <!-- Reg Dialog -->
 
@@ -54,37 +56,39 @@
 
         <!-- Control Dialog -->
 
-        <dialog id="control-dialog">
+        <dialog id="control-dialog" open>
             <div class="control-box">
                 <button class="close-button" onclick="closeForm('control-dialog')">X</button>
-                <div class="control-page">
-                    <h1>Добавить аукцион</h1>
-                    <form  id = "control-form" action="/auc/create" method="post">
-                        <input required type="text" name = "auct_name" placeholder="Auction name" >
-                        <input required type="datetime-local" name = "starting_date" placeholder="Starting date">
-                        <input required type="datetime-local" name = "ending_date" placeholder="Ending_date">
-                        <input required type="number" name = "auct_step" placeholder="Step">
-                        <input type="submit" value="Создать">
-                    </form>
+                <div class="control-names">
+                    <h2>Добавить аукцион</h2>
+                    <h2>Список доступных<br>лотов</h2>
                 </div>
-                <div class="control-page">
-                    <h1>Список доступных лотов</h1>
-                    <div class="lot-box">
-                        <form id="lots-form" action="" method="">
-                            <select name="lot_name" id="" multiple>
-                                <option value="">Лот 1</option>
-                                <option value="">Лот 2</option>
-                                <option value="">Лот 3</option>
-                                <option value="">Лот 4</option>
-                            </select>
-                        </form>
+                <form id="control-form" action="/auc/create" method="post">
+                    <div class="control-flexbox">
+                        <div class="control">
+                            <input required type="text" name="auct_name" placeholder="Auction name">
+                            <input required type="datetime-local" name="starting_date" placeholder="Starting date">
+                            <input required type="datetime-local" name="ending_date" placeholder="Ending date">
+                            <input required type="number" name="auct_step" placeholder="Step">
+                        </div>
+                        
+                        <div id="create-lot-box">
+                            <div class="lot-box">
+                                <select name="lot_ids" id="" multiple>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <button type="button" class="create-lot" onclick="openForm('lot-dialog')">Создать новый лот</button>
-                </div>
+                    
+                    <div class="control-buttons">
+                        <input type="submit" value="Создать">
+                        <button type="button" class="create-lot" onclick="openForm('lot-dialog')">Создать новый лот</button>
+                    </div>
+                </form>
             </div>
         </dialog>
 
-        <!-- Lot dialog -->
+        <!-- Lot Dialog -->
 
         <dialog id="lot-dialog">
             <div class="lot-cont">
@@ -106,27 +110,27 @@
             <div class="user-page">
                 <button class="close-button" onclick="closeForm('user-dialog')">X</button>
                 <h1>Все пользователи</h1>
-                <div id="user-block">
-                    <form class="user-info" action ="/user/update" method="post">
-                        <input readonly value="ID" name="id" class="user-id">
-                        <input readonly value="Lastname" class="user-lname">
-                        <input readonly value="Name" class="user-name">
-                        <input readonly value="Middlename" class="user-mname">
-                        <input readonly value="Bank info" class="user-bank">
-                        <select name="id_role" class="user-role" onchange="updateUser(0)">
-                            <option value="1">Администратор</option>
-                            <option value="2">Аукционер</option>
-                            <option value="3">Участник</option>
-                        </select>
-                    </form>                    
+                <div class="user-hints">
+                    <input readonly value="UserID" disabled>
+                    <input readonly value="Name" disabled>
+                    <input readonly value="LastName"disabled>
+                    <input readonly value="MiddleName" disabled>
+                    <input readonly value="Bank Info" disabled>
+                    <input readonly value="Role" disabled>
+                </div>
+                <div id="user-box">
+                    <div id="user-block">
+                    </div>
                 </div>
             </div>
         </dialog>
 
+        <!-- Redact Dialog -->
 
         <dialog id="redact-dialog">
             <div class="redact-box">
                 <button class="close-button" onclick="closeForm('redact-dialog')">X</button>
+                <button id="delete-auc" onclick="">Удалить аукцион</button>
                 <h1>Редактирование аукциона</h1>
                 <form action="#">
                     <input required type="text" name = "auct_name" placeholder="Auction name" >
@@ -138,6 +142,7 @@
                 </form>
             </div>
         </dialog>
+
         <!-- Auctions -->
 
         <div id="auc-box">

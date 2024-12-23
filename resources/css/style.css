@@ -236,115 +236,169 @@ dialog button.close-button:hover{
 
 /* dialog control styles */
 
-dialog#control-dialog{
-    width: 50vw;
+dialog#control-dialog {
+    width: 55vw;
+    height: 30vw;
 }
-dialog#control-dialog div.control-box{
+
+dialog#control-dialog div.control-names{
     display: flex;
-    gap: 1vw;
+    gap: 8vw;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.3vw;
+    margin-bottom: 1vw;
 }
 
-dialog form#control-form{
+dialog#control-dialog form div.control-flexbox{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1vw;
+    justify-content: center;
+    gap: 8vw;
 }
 
-dialog form#control-form input:not(input[type="submit"]){
-    width: 20vw;
-    background-color: white;
-}
-
-dialog form#control-form select{
-    font-size: 1vw;
-    width: 21.6vw;
-    background-color: white;
-    border: none;
-    border-radius: 1vw;
-    height: 3vw;
-}
-
-input.second-b{
-    position: absolute;
-    top: 27.6vw;
-}
-
-dialog#control-dialog div.control-page:nth-of-type(2){
-    margin: 0vw 2vw;
+dialog#control-dialog form div.control{
+    position: relative;
+    width: 22vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 1vw;
+    margin-bottom: 2vw;
 }
 
-dialog#control-dialog button.create-lot {
-    border-radius: 1vw;
-    margin-top: 2.1vw;
-    border: none;
+dialog#control-dialog form div.control input{
+    background-color: white;
     font-size: 1vw;
-    cursor: pointer;
-    transition: 0.2s;
-    padding: 0.8vw 2vw;
-    background-color: rgb(144, 255, 144);
 }
 
-dialog#control-dialog button.create-lot:hover {
-    background-color: rgb(89, 255, 89);
-    transition: 0.5s;
-}
-
-dialog#control-dialog div.lot-box{
-    width: 80%;
-    background-color: rgb(0, 0, 0, 0.45);
+dialog#control-dialog form div#create-lot-box{
+    position: relative;
+    right: 2vw;
     padding: 1.5vw;
+    width: 15vw;
+    background-color: rgb(0, 0, 0, 0.4);
     border-radius: 1vw;
-    height: 8vw;
-    overflow: hidden;
+    height: 11.5vw;
 }
 
-dialog#control-dialog form#lots-form{
-    width: 100%;
-    background: transparent;
-    height: 100%;
-    overflow: hidden;
+dialog#control-dialog form div#create-lot-box div.lot-box{
+    justify-self: center;
+    padding: 1vw;
+    height: 10vw;
 }
 
-dialog#control-dialog form#lots-form select{
-    width: 100%;
-    background: transparent;
+dialog#control-dialog form div#create-lot-box div.lot-box select{
+    background-color: transparent;
     border: none;
-    font-size: 1vw;
-    height: 100%;
+    overflow: scroll;
+    height: 12.5vw;
+    position: relative;
+    top: -1.5vw;
 }
 
-dialog#control-dialog form#lots-form select::-webkit-scrollbar{
+dialog#control-dialog form div#create-lot-box div.lot-box select:focus{
+    outline: transparent;
+}
+
+dialog#control-dialog form div#create-lot-box div.lot-box select::-webkit-scrollbar{
     display: none;
 }
 
-dialog#control-dialog form#lots-form select option{
-    white-space: normal;
+dialog#control-dialog form div#create-lot-box div.lot-box select option{
+    background-color: rgb(137, 242, 137);
+    padding: 0.5vw 1vw;
+    border-radius: 0.6vw;
+    font-size: 0.9vw;
+    margin-bottom: 0.5vw;
     transition: 0.3s;
-    margin-bottom: 1vw;
-    padding: 0.7vw;
-    border-radius: 1vw;
-    margin-right: 0.5vw;
-    background-color: #78ff83;
 }
 
-dialog#control-dialog form#lots-form select option:hover{
+dialog#control-dialog form div#create-lot-box div.lot-box select option:hover{
+    cursor: pointer;
     background-color: #3ef24d;
     transition: 0.3s;
+}
+
+dialog#control-dialog form div#create-lot-box div.lot-box select option:checked{
     color: black;
 }
 
-dialog#control-dialog form#lots-form select:focus{
-    outline: transparent;
+dialog#control-dialog form div#create-lot-box div.lot-box select option:last-of-type{
+    margin-bottom: 0;
+}
+
+dialog#control-dialog form div.control-buttons{
+    display: flex;
+    justify-content: space-around;
+}
+
+dialog#control-dialog form div.control-buttons button{
+    position: relative;
+    right: 1.5vw;
+    transition: 0.3s;
+    border-radius: 1vw;
+    border: none;
+    background-color: rgb(144, 255, 144);
+    padding: 1vw;
+    font-size: 1.1vw;
+}
+
+dialog#control-dialog form div.control-buttons button:hover{
+    cursor: pointer;
+    background-color: rgb(89, 255, 89);
+    transition: 0.3s;
+}
+
+dialog#control-dialog form div.control-buttons input {
+    width: 15vw;
+    font-size: 1.1vw;
 }
 
 /* dialog user styles */
 
 dialog#user-dialog {
     width: 90vw;
+}
+
+dialog#user-dialog h1{
+    margin-top: 0;
+}
+
+dialog#user-dialog div.user-hints{
+    display: flex;
+    gap: 0.6vw;
+    justify-content: center;
+}
+dialog#user-dialog div.user-hints *{
+    width: 10vw;
+    margin-bottom: 0.5vw;
+    font-size: 1vw;
+    background: rgb(123, 255, 136);
+    border: 0.1vw solid rgb(58, 107, 33);
+    cursor: default;
+    color: black;
+    font-weight: 700;
+    height: 0.7vw;
+}
+
+dialog#user-dialog div.user-hints *:nth-child(1){
+    width: 3vw;
+}
+
+dialog#user-dialog div.user-hints *:nth-child(6){
+    width: 8.4vw;
+}
+
+dialog#user-dialog div#user-box{
+    padding: 1vw;
+}
+
+dialog#user-dialog div#user-block{
+    overflow-y: scroll;
+    height: 20vw;
+}
+
+dialog#user-dialog div#user-block::-webkit-scrollbar{
+    display: none;
 }
 
 dialog form.user-info{
@@ -390,6 +444,25 @@ dialog form.user-info select{
 }
 
 /* dialog redact styles */
+
+
+.redact-box button#delete-auc{
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute;
+    right: 3vw;
+    background-color: rgb(250, 93, 93);
+    border: none;
+    border-radius: 1vw;
+    padding: 0.7vw 1vw;
+    margin-top: 1vw;
+    font-size: 1vw;
+}
+
+.redact-box button#delete-auc:hover{
+    filter: contrast(1.5);
+    transition: 0.3s;
+}
 
 .auc-cont button.redact-button{
     padding: 0.2vw 0.5vw;

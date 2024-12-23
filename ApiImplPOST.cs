@@ -9,9 +9,24 @@ public partial class ApiImpl {
             starting_date = DateOnly.Parse(form_info["starting_date"]),
             ending_date = DateOnly.Parse(form_info["ending_date"]),
         };
+        
         db.Auctions.Add(a);
         db.SaveChanges();
-        res.ResponseText("Auction was added.");
+
+        var selectedLotIds = form_info["lot_ids[]"];
+
+        if (!string.IsNullOrEmpty(selectedLotIds)) {
+            var lotIds = selectedLotIds.Split(',').Select(id_lot => int.Parse(id_lot.Trim())).ToArray();
+
+            foreach (var id_lot in lotIds) {
+                var lot = db.Lots.Find(id_lot);
+                if (lot != null) {
+                    lot.id_auction = a.id_auction;
+                }
+            }
+            db.SaveChanges();
+        }
+        res.ResponseText("Auction was added and lots updated.");
     }
 
     public static void CreateLot(Request req, Response res) {

@@ -27,7 +27,6 @@ public class Auction {
     [Key]
     public int id_auction { get; set; }
     public string? auct_name { get; set; }
-    public int? id_lot  { get; set; }
     public date starting_date { get; set; }
     public date ending_date { get; set; }
     public string ToJSON() => JsonSerializer.Serialize(this);
