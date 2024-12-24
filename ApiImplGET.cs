@@ -1,5 +1,7 @@
 namespace AucSite;
 
+#nullable disable
+
 public partial class ApiImpl {
     static void SendContent(in Response res, string json_content) {
         res.ContentType = "application/json; charset=utf-8";

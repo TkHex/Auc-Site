@@ -48,6 +48,12 @@
         "Method": "POST"
     },
     {
+        "Name": "RedactAuction",
+        "Url": "\/auc\/redact",
+        "AuthRequired": false,
+        "Method": "POST"
+    },
+    {
         "Name": "GetLots",
         "Url": "\/lot\/all",
         "AuthRequired": false,

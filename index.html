@@ -10,8 +10,9 @@
     <script src="./resources/js/renderMainPage.js"></script>
     <script src="./resources/js/renderUserInfo.js"></script>
     <script src="./resources/js/renderCreateAuc.js"></script>
+    <script src="./resources/js/renderRedactAuc.js"></script>
 </head>
-<body onload="renderMainPage(), loadLotsForCreateAuc()">
+<body onload="renderMainPage()">
 
     <!-- Header html -->
 
@@ -19,7 +20,7 @@
         <h1>
             <a href="index.html">AUC.RU</a>
         </h1>
-        <button class = "hide-bt" onclick = "openForm('control-dialog')">Управление</button>
+        <button class = "hide-bt" onclick = "openForm('control-dialog'),  loadLotsForCreateAuc()">Управление</button>
         <button class = "hide-bt" onclick = "openForm('user-dialog')">Пользователи</button>
         <div id = "welcome">Hello, name!</div>
         <button id="welcome-but">&crarr;</button>
@@ -56,7 +57,7 @@
 
         <!-- Control Dialog -->
 
-        <dialog id="control-dialog" open>
+        <dialog id="control-dialog">
             <div class="control-box">
                 <button class="close-button" onclick="closeForm('control-dialog')">X</button>
                 <div class="control-names">
@@ -67,9 +68,9 @@
                     <div class="control-flexbox">
                         <div class="control">
                             <input required type="text" name="auct_name" placeholder="Auction name">
-                            <input required type="datetime-local" name="starting_date" placeholder="Starting date">
-                            <input required type="datetime-local" name="ending_date" placeholder="Ending date">
-                            <input required type="number" name="auct_step" placeholder="Step">
+                            <input required type="date" name="starting_date" placeholder="Starting date">
+                            <input required type="date" name="ending_date" placeholder="Ending date">
+                            <input required type="number" min="0" name="auct_step" placeholder="Step">
                         </div>
                         
                         <div id="create-lot-box">
@@ -132,12 +133,24 @@
                 <button class="close-button" onclick="closeForm('redact-dialog')">X</button>
                 <button id="delete-auc" onclick="">Удалить аукцион</button>
                 <h1>Редактирование аукциона</h1>
-                <form action="#">
-                    <input required type="text" name = "auct_name" placeholder="Auction name" >
-                    <input required type="text" name = "lot_name" placeholder="Lot name">
-                    <input required type="datetime-local" name = "starting_date" placeholder="Starting date">
-                    <input required type="datetime-local" name = "ending_date" placeholder="Ending_date">
-                    <input required type="number" name = "auct_step" placeholder="Step">
+                <form action="">
+                    <div class="redact-flexbox">
+                        <div class="redact-info-cont">
+                            <input type="hidden" name="id_auction" id="auctionIdInput">
+                            <input required type="text" name = "auct_name" placeholder="Auction name" >
+                            <input required type="date" name = "starting_date" placeholder="Starting date">
+                            <input required type="date" name = "ending_date" placeholder="Ending_date">
+                            <input required type="number" name = "auct_step" placeholder="Step">
+                        </div>
+    
+                        <div id="create-lot-box">
+                            <div class="lot-box">
+                                <select name="lot_in_auc" id="" multiple>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <input type="submit" value="Сохранить" onclick = "alert('Редактирование завершено!')">
                 </form>
             </div>

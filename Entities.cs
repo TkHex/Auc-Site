@@ -29,6 +29,7 @@ public class Auction {
     public string? auct_name { get; set; }
     public date starting_date { get; set; }
     public date ending_date { get; set; }
+    public int? auct_step { get; set; }
     public string ToJSON() => JsonSerializer.Serialize(this);
 }
 
