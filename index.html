@@ -11,6 +11,7 @@
     <script src="./resources/js/renderUserInfo.js"></script>
     <script src="./resources/js/renderCreateAuc.js"></script>
     <script src="./resources/js/renderRedactAuc.js"></script>
+    <script src="./resources/js/renderDelete.js"></script>
 </head>
 <body onload="renderMainPage()">
 
@@ -131,9 +132,9 @@
         <dialog id="redact-dialog">
             <div class="redact-box">
                 <button class="close-button" onclick="closeForm('redact-dialog')">X</button>
-                <button id="delete-auc" onclick="">Удалить аукцион</button>
+                <button type="button" id="delete-auc" onclick="deleteAuction()">Удалить аукцион</button>
                 <h1>Редактирование аукциона</h1>
-                <form action="">
+                <form id="auc-redact" action="/auc/redact" method="post">
                     <div class="redact-flexbox">
                         <div class="redact-info-cont">
                             <input type="hidden" name="id_auction" id="auctionIdInput">
@@ -151,7 +152,7 @@
                         </div>
                     </div>
 
-                    <input type="submit" value="Сохранить" onclick = "alert('Редактирование завершено!')">
+                    <input type="submit" value="Сохранить">
                 </form>
             </div>
         </dialog>
