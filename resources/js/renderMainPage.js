@@ -35,4 +35,26 @@ async function renderMainPage() {
     } else {
         throw new Error("Ошибка при загрузке аукционов");
     }
+    loadButtonsOnRoles();
+}
+
+async function loadButtonsOnRoles(){
+     const userRole = await getUserRole();
+
+     const controlButton = document.querySelector('.hide-bt[onclick*="control-dialog"]');
+     const userButton = document.querySelector('.hide-bt[onclick*="user-dialog"]');
+     const redactButton = document.querySelector('.hide-bt[onclick*="redact-dialog"]');
+     if (userRole === 1) {
+         controlButton.style.display = 'block';
+         userButton.style.display = 'block';
+         redactButton.style.display = 'block';
+     } else if (userRole === 2)  {
+        controlButton.style.display = 'block';
+        redactButton.style.display = 'block';
+        userButton.style.display = 'none';
+     } else {
+        controlButton.style.display = 'none';
+        redactButton.style.display = 'none';
+        userButton.style.display = 'none';
+     }
 }
